@@ -58,7 +58,7 @@ figure()
 for i in range(0,5):
 	plot(x,rho[tnum[i]],'r--')
 	plot(x,fitfun[i],'c')
-legend(['t1(num.)','t1(fit.)','t2(num.)','t2(fit.)','t3(num.)','t3(fit.)','t4(num.)','t4(fit.)','t5(num.)','t5(fit.)'], loc='best')
+legend(['numerical results','fitting result'], loc='best')
 xlabel('x axis')
 ylabel('probability density')
 grid()
