@@ -6,24 +6,28 @@ D=2.
 dx=1
 dt=0.1
 n=200
-t=10000
 
 #define Gaussian function
 def gaussian(X, mu, sig):
 	return np.exp(-(X - mu)**2 / (2*sig**2))/(sqrt(2*pi*sig**2))
 
-#define list to store probalbility density for 2n+1 points
+#define list to store time that the measurements take place
+tnum=[500,1000,3000,5000,9000]
+print "Please enter the time[s] when the measurements take place:"
+tnum[0]= input('t1 = ')/dt
+tnum[1]= input('t2 = ')/dt
+tnum[2]= input('t3=  ')/dt
+tnum[3]= input('t4=  ')/dt
+tnum[4]= input('t5=  ')/dt
+t=int(max(tnum))+10
+
+#initlalize the density distribution
 rho=zeros((t,2*n+1))
+for i in range(n-5,n+6):
+    rho[0][i]=1./10.
 
 #define list to store 2n+1 x cordinate
 x=linspace(-n*dx,n*dx,2*n+1)
-
-#define list to store time that the measurements take place
-tnum=[500,1000,3000,5000,9000]
-
-#initlalize the density distribution
-for i in range(n-5,n+6):
-	rho[0][i]=1./10.
 
 #diffusion formula
 for i in range(0,t-1):
@@ -54,7 +58,7 @@ figure()
 for i in range(0,5):
 	plot(x,rho[tnum[i]],'r--')
 	plot(x,fitfun[i],'c')
-legend(['500s(num.)','500s(fit.)','1000s(num.)','1000s(fit.)','3000s(num.)','3000s(fit.)','5000s(num.)','5000s(fit.)','9000s(num.)','9000s(fit.)'], loc='best')
+legend(['t1(num.)','t1(fit.)','t2(num.)','t2(fit.)','t3(num.)','t3(fit.)','t4(num.)','t4(fit.)','t5(num.)','t5(fit.)'], loc='best')
 xlabel('x axis')
 ylabel('probability density')
 grid()
